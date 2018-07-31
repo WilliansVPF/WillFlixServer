@@ -37,7 +37,7 @@ export default function() {
         res.send(movie)
     })
 
-    app.listen(3000, () => {
+    app.listen(proces.env.PORT || 3000, () => {
         console.log("example server running on port 3000")        
     })
 
