@@ -3,6 +3,8 @@ import Movie from './models/Movie'
 import MovieRepository from './repositories/MovieRepository'
 import bodyParser from 'body-parser'
 
+const port = proces.env.PORT || 3000
+
 export default function() {
 
     const app = express()
@@ -37,8 +39,8 @@ export default function() {
         res.send(movie)
     })
 
-    app.listen(proces.env.PORT || 3000, () => {
-        console.log("example server running on port 3000")        
+    app.listen(port, () => {
+        console.log(`example server running on port ${port}`)        
     })
 
 }

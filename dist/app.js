@@ -38,8 +38,8 @@ exports.default = function () {
         res.send(movie);
     });
 
-    app.listen(3000, function () {
-        console.log("example server running on port 3000");
+    app.listen(port, function () {
+        console.log('example server running on port ' + port);
     });
 };
 
@@ -60,3 +60,5 @@ var _bodyParser = require('body-parser');
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var port = proces.env.PORT || 3000;
