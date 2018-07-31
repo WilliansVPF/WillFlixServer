@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js"    
+    "start": "nodemon ./src/index.js",
+    "build": "babel src --presets babel-preset-env --out-dir ./dist"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "nodemon": "^1.18.3"
