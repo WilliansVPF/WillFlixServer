@@ -1,14 +1,12 @@
-import uuidv1 from 'uuid/v1'
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
 
-class Movie {
-    constructor(title, director, img, year, duration) {
-        this.id = uuidv1()
-        this.title = title
-        this.director = director
-        this.img = img
-        this.year = year
-        this.duration = duration
-    }
-}
+const movie = new Schema({     
+    title: String,
+    director: String,
+    img: String,
+    year: Date,
+    duration: Number
+});
 
-export default Movie
+export const Movie = mongoose.model('Movie', movie)

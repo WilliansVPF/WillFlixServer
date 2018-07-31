@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js",
+    "start": "npm run build && nodemon ./dist/index.js",
     "build": "babel src --presets babel-preset-env --out-dir ./dist"
   },
   "author": "",
@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "mongoose": "^5.2.6",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

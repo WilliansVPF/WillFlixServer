@@ -1,53 +1,33 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = Repository;
-function Repository() {
-    var that = this;
-    that.db = [];
+exports.MovieRepository = undefined;
 
-    function save(movie) {
-        that.db.push(movie);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Movie = require('../models/Movie');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MovieRepository = exports.MovieRepository = function () {
+    function MovieRepository() {
+        _classCallCheck(this, MovieRepository);
     }
 
-    function get(id) {
-        var movie = null;
-        that.db.forEach(function (imovie) {
-            if (imovie.id === id) {
-                movie = imovie;
-            }
-        });
-        return movie;
-    }
-
-    function update(id, uMovie) {
-        var movie = get(id);
-        if (movie) {
-            movie.title = uMovie.title;
-            movie.director = uMovie.director;
-            movie.img = uMovie.img;
-            movie.year = uMovie.year;
-            movie.duration = uMovie.duration;
+    _createClass(MovieRepository, [{
+        key: 'add',
+        value: function add(title, director, img, year, duration) {
+            var newMovie = new _Movie.Movie({ title: title, director: director, img: img, year: year, duration: duration });
+            return newMovie.save();
         }
-    }
-
-    function del(id) {
-        var movie = get(id);
-        if (movie) {
-            delete movie.id;
-            delete movie.title;
-            delete movie.director;
-            delete movie.img;
-            delete movie.year;
-            delete movie.duration;
+    }, {
+        key: 'get',
+        value: function get() {
+            return _Movie.Movie.find();
         }
-        console.log(that.db);
-    }
+    }]);
 
-    that.save = save;
-    that.get = get;
-    that.update = update;
-    that.del = del;
-}
+    return MovieRepository;
+}();

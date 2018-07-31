@@ -3,24 +3,22 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Movie = undefined;
 
-var _v = require('uuid/v1');
+var _mongoose = require('mongoose');
 
-var _v2 = _interopRequireDefault(_v);
+var _mongoose2 = _interopRequireDefault(_mongoose);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var Schema = _mongoose2.default.Schema;
 
-var Movie = function Movie(title, director, img, year, duration) {
-    _classCallCheck(this, Movie);
+var movie = new Schema({
+    title: String,
+    director: String,
+    img: String,
+    year: Date,
+    duration: Number
+});
 
-    this.id = (0, _v2.default)();
-    this.title = title;
-    this.director = director;
-    this.img = img;
-    this.year = year;
-    this.duration = duration;
-};
-
-exports.default = Movie;
+var Movie = exports.Movie = _mongoose2.default.model('Movie', movie);

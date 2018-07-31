@@ -1,6 +1,6 @@
+import mongoose from 'mongoose'
 import express from 'express'
-import Movie from './models/Movie'
-import MovieRepository from './repositories/MovieRepository'
+import { MovieRepository } from './repositories/MovieRepository'
 import bodyParser from 'body-parser'
 
 const port = process.env.PORT || 3000
@@ -8,35 +8,30 @@ const port = process.env.PORT || 3000
 export default function() {
 
     const app = express()
+    mongoose.connect('mongodb://WilliansVpf:jiromba10@ds259711.mlab.com:59711/express-server-db')
     app.use(bodyParser.json())
-    const movieRepository = new MovieRepository();
-    
-    movieRepository.save(new Movie('Filme 1', 'Willians', 'img.png', 1994, 180))
-    movieRepository.save(new Movie('Filme 2', 'Bruno', 'img2.png', 1990, 140))
+    const movieRepository = new MovieRepository()
 
     app.get('/movie', (req, res) => {
-        res.send(movieRepository.db)
-    })
-
-    app.get('/movie/:id', (req, res) => {
-        const movie = movieRepository.get(req.params.id)
-        res.send(movie)
-    })
-
-    app.put('/movie/:id', (req, res) => {
-        const movie = movieRepository.update(req.params.id, new Movie(req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration))
-        res.send(movie)
+        movieRepository.get().then((movie) => {
+            console.log(movie) 
+            res.send(movie)
+        }).catch((error) => {
+            console.log(error)
+            res.status(500)
+            res.send(error)
+        })        
     })
 
     app.post('/movie', (req, res) => {
-        const movie = new Movie(req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration)
-        movieRepository.save(movie)
-        res.send(movie)
-    })
-
-    app.delete('/movie/:id', (req, res) => {
-        const movie = movieRepository.del(req.params.id)
-        res.send(movie)
+        movieRepository.add(req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration).then((movie) => {
+            console.log(movie) 
+            res.send(movie)
+        }).catch((error) => {
+            console.log(error)
+            res.status(500)
+            res.send(error)
+        })        
     })
 
     app.listen(port, () => {
