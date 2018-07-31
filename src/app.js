@@ -22,7 +22,8 @@ export default function() {
     })
 
     app.put('/movie/:id', (req, res) => {
-        res.send({ content: 'Hello World' })
+        const movie = movieRepository.update(req.params.id, new Movie(req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration))
+        res.send(movie)
     })
 
     app.post('/movie', (req, res) => {
@@ -32,7 +33,8 @@ export default function() {
     })
 
     app.delete('/movie/:id', (req, res) => {
-        res.send({ content: 'Hello World' })
+        const movie = movieRepository.del(req.params.id)
+        res.send(movie)
     })
 
     app.listen(3000, () => {

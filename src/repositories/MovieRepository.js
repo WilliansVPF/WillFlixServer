@@ -28,7 +28,16 @@ export default function Repository() {
     }
     
     function del(id) {
-    
+        const movie = get(id)
+        if (movie) {
+            delete movie.id            
+            delete movie.title
+            delete movie.director 
+            delete movie.img 
+            delete movie.year
+            delete movie.duration
+        }
+        console.log(that.db)
     }
 
     that.save = save
