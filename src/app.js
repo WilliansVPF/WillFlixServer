@@ -3,7 +3,7 @@ import Movie from './models/Movie'
 import MovieRepository from './repositories/MovieRepository'
 import bodyParser from 'body-parser'
 
-const port = proces.env.PORT || 3000
+const port = process.env.PORT || 3000
 
 export default function() {
 
