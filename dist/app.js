@@ -22,8 +22,30 @@ exports.default = function () {
         });
     });
 
+    app.get('/movie/:id', function (req, res) {
+        movieRepository.getId(req.params.id).then(function (movie) {
+            console.log(movie);
+            res.send(movie);
+        }).catch(function (error) {
+            console.log(error);
+            res.status(500);
+            res.send(error);
+        });
+    });
+
     app.post('/movie', function (req, res) {
         movieRepository.add(req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration).then(function (movie) {
+            console.log(movie);
+            res.send(movie);
+        }).catch(function (error) {
+            console.log(error);
+            res.status(500);
+            res.send(error);
+        });
+    });
+
+    app.delete('/movie/:id', function (req, res) {
+        movieRepository.del(req.params.id).then(function (movie) {
             console.log(movie);
             res.send(movie);
         }).catch(function (error) {

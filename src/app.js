@@ -23,8 +23,30 @@ export default function() {
         })        
     })
 
+    app.get('/movie/:id', (req, res) => {
+        movieRepository.getId(req.params.id).then((movie) => {
+            console.log(movie) 
+            res.send(movie)
+        }).catch((error) => {
+            console.log(error)
+            res.status(500)
+            res.send(error)
+        })        
+    })
+
     app.post('/movie', (req, res) => {
         movieRepository.add(req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration).then((movie) => {
+            console.log(movie) 
+            res.send(movie)
+        }).catch((error) => {
+            console.log(error)
+            res.status(500)
+            res.send(error)
+        })        
+    })
+
+    app.delete('/movie/:id', (req, res) => {
+        movieRepository.del(req.params.id).then((movie) => {
             console.log(movie) 
             res.send(movie)
         }).catch((error) => {

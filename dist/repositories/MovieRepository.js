@@ -27,6 +27,16 @@ var MovieRepository = exports.MovieRepository = function () {
         value: function get() {
             return _Movie.Movie.find();
         }
+    }, {
+        key: 'getId',
+        value: function getId(id) {
+            return _Movie.Movie.findById(id);
+        }
+    }, {
+        key: 'del',
+        value: function del(id) {
+            return _Movie.Movie.deleteMany(id);
+        }
     }]);
 
     return MovieRepository;

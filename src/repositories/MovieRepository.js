@@ -12,5 +12,13 @@ export class MovieRepository {
         return Movie.find()
     }
 
+    getId(id){
+        return Movie.findById(id)
+    }
+
+    del(id){
+        return Movie.findByIdAndDelete(id)
+    }
+
 }
 
