@@ -55,6 +55,17 @@ exports.default = function () {
         });
     });
 
+    app.put('/movie/:id', function (req, res) {
+        movieRepository.update(req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration).then(function (movie) {
+            console.log(movie);
+            res.send(movie);
+        }).catch(function (error) {
+            console.log(error);
+            res.status(500);
+            res.send(error);
+        });
+    });
+
     app.listen(port, function () {
         console.log('example server running on port ' + port);
     });

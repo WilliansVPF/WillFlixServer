@@ -56,6 +56,17 @@ export default function() {
         })        
     })
 
+    app.put('/movie/:id', (req, res) => {
+        movieRepository.update(req.body.director, req.body.img, req.body.year, req.body.duration).then((movie) => {
+            console.log(movie) 
+            res.send(movie)
+        }).catch((error) => {
+            console.log(error)
+            res.status(500)
+            res.send(error)
+        })        
+    })
+
     app.listen(port, () => {
         console.log(`example server running on port ${port}`)        
     })
