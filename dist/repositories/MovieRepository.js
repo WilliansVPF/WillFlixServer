@@ -37,6 +37,12 @@ var MovieRepository = exports.MovieRepository = function () {
         value: function del(id) {
             return _Movie.Movie.findByIdAndDelete(id);
         }
+    }, {
+        key: 'update',
+        value: function update(id, title, director, img, year, duration) {
+            var newMovie = new _Movie.Movie({ id: id, title: title, director: director, img: img, year: year, duration: duration });
+            return newMovie.findByIdAndUpdate(id);
+        }
     }]);
 
     return MovieRepository;
