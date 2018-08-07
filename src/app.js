@@ -57,7 +57,7 @@ export default function() {
     })
 
     app.put('/movie/:id', (req, res) => {
-        movieRepository.update(req.body.director, req.body.img, req.body.year, req.body.duration).then((movie) => {
+        movieRepository.update(req.params.id,req.body.director, req.body.img, req.body.year, req.body.duration).then((movie) => {
             console.log(movie) 
             res.send(movie)
         }).catch((error) => {
