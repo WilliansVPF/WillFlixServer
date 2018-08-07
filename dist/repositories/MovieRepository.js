@@ -40,8 +40,8 @@ var MovieRepository = exports.MovieRepository = function () {
     }, {
         key: 'update',
         value: function update(id, title, director, img, year, duration) {
-            var newMovie = new _Movie.Movie({ id: id, title: title, director: director, img: img, year: year, duration: duration });
-            return newMovie.findByIdAndUpdate(id);
+            var newMovie = new _Movie.Movie({ title: title, director: director, img: img, year: year, duration: duration });
+            return _Movie.Movie.findByIdAndUpdate(id, newMovie);
         }
     }]);
 

@@ -21,8 +21,8 @@ export class MovieRepository {
     }
 
     update(id, title, director, img, year, duration){
-        const newMovie = new Movie({id, title, director, img, year, duration})
-        return newMovie.findByIdAndUpdate(id)
+        const newMovie = new Movie({title, director, img, year, duration})
+        return Movie.findByIdAndUpdate(id, newMovie)
     }
 
 }
