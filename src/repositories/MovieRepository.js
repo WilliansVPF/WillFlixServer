@@ -1,7 +1,7 @@
 import { Movie } from '../models/Movie'
 
 
-export class MovieRepository {
+export default class MovieRepository {
 
     add(title, director, img, year, duration) {
         const newMovie = new Movie({title, director, img, year, duration})
