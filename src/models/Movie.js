@@ -6,7 +6,8 @@ const movie = new Schema({
     director: String,
     img: String,
     year: Date,
-    duration: Number
+    duration: Number,
+    like: Boolean
 });
 
 export const Movie = mongoose.model('Movie', movie)

@@ -8,7 +8,7 @@ export default class MovieController {
     
     @Get('/movie', 'getAll')
     getAll(req, res) {
-        this.movieRepository.get().then((movie) => {
+        this.movieRepository.get(req.query).then((movie) => {
             console.log(movie) 
             res.send(movie)
         }).catch((error) => {
@@ -29,6 +29,7 @@ export default class MovieController {
             res.send(error)
         })        
     }
+
 
     @Post('/movie')
     save(req, res) {
@@ -56,7 +57,7 @@ export default class MovieController {
 
     @Put('/movie/:id')
     update(req, res) {
-        this.movieRepository.update(req.params.id,req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration).then((movie) => {
+        this.movieRepository.update(req.params.id,req.body.title, req.body.director, req.body.img, req.body.year, req.body.duration, req.body.like).then((movie) => {
             console.log(movie) 
             res.send(movie)
         }).catch((error) => {
