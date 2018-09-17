@@ -14,6 +14,10 @@ export function Delete(url, ref = 'delete') {
     return decorator(url, ref, 'delete')
 }
 
+export function Option(url, ref = 'options') {
+    return decorator(url, ref, 'options')
+}
+
 function decorator(url, ref, method) {
     return function(target) {
         target.http = target.http || []
